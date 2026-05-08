@@ -1,0 +1,29 @@
+aid: galileo-ai
+url: https://raw.githubusercontent.com/api-evangelist/galileo-ai/refs/heads/main/apis.yml
+name: Galileo
+x-type: company
+description: >-
+  Galileo is an AI evaluation, observability, and protection platform for GenAI applications, with hallucination detection, RAG metrics, and prompt evaluation.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - AI
+  - LLM
+  - Evaluation
+  - Observability
+  - GenAI
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://www.galileo.ai/
+  - type: Plans
+    url: plans/galileo-ai-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/galileo-ai-rate-limits.yml
+  - type: FinOps
+    url: finops/galileo-ai-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
