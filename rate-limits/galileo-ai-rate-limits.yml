@@ -7,29 +7,40 @@ created: '2026-05-08'
 modified: '2026-05-08'
 reconciled: false
 tags:
-- AI
-- LLM
-- Evaluation
+- AI Evaluation
 - Observability
 - GenAI
+- Guardrails
+- Agentic AI
+- LLM
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Galileo. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Galileo applies per-API-key rate limits and per-tier monthly trace/evaluation quotas. Specific RPS
+  thresholds are not publicly documented on the docs landing page; the API returns 429 on overage.
+  Coordinate with Galileo support for higher limits.
+notes: Per-tier monthly quotas; specific RPS not publicly documented.
 sources:
-- https://www.galileo.ai/
+- https://docs.galileo.ai/
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Per API key
   scope: account
-  metric: varies
+  metric: requests
   limit: see provider documentation
-  notes: Pending reconciliation.
+  notes: Throttled with 429 on overage.
+- name: Monthly quota
+  scope: account
+  metric: traces+evals
+  limit: tier-defined
+  notes: Each plan tier has a monthly trace/eval allowance.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Honor 429/Retry-After with exponential backoff.
+- name: Sampling
+  description: Sample traces in production to stay within tier quota.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

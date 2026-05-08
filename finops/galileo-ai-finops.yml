@@ -5,20 +5,24 @@ provider: Galileo
 providerId: galileo-ai
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- AI
-- LLM
-- Evaluation
+- AI Evaluation
 - Observability
 - GenAI
+- Guardrails
+- Agentic AI
+- LLM
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Galileo. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for Galileo. Cost is driven by tier (seats) plus metered
+  traces/evaluations. Optimize by using sampling in high-volume production paths, choosing cheaper
+  judge models within Galileo evaluators, and aligning tier with actual usage at renewal.
+notes: Seat + metered traces/evals; sampling and judge-model choice are key levers.
 sources:
-- https://www.galileo.ai/
+- https://galileo.ai/pricing
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -27,40 +31,50 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: Galileo
-serviceCategory: AI
+serviceCategory: AI Observability
 billingModel:
-  pricingCategory: To Be Reconciled
-  billingFrequency: Monthly
+  pricingCategory: Subscription + Usage
+  billingFrequency: Monthly / Annual
   billingCurrency: USD
   chargeCategories:
+  - Subscription
   - Usage
-  - Purchase
-  - Adjustment
 focusColumns:
   ServiceName: Galileo
-  ServiceCategory: AI
+  ServiceCategory: AI Observability
   ProviderName: Galileo
   PublisherName: Galileo
   InvoiceIssuerName: Galileo
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Subscription
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: seats
+  description: Active users with platform access.
+  unit: seat-month
+  aggregation: max
+  dimensions:
+  - team
+- name: traces
+  description: Traces ingested into Galileo.
+  unit: trace
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - project
+- name: evaluations
+  description: Evaluation runs executed.
+  unit: eval
+  aggregation: sum
+  dimensions:
+  - project
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Track trace and eval volume per project monthly.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate cost per AI feature or model team.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Sample traces in production; pick cheaper judge models in evaluators.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: AI/ML platform team owns Galileo contract and tier.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

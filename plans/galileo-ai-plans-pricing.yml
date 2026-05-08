@@ -5,37 +5,80 @@ provider: Galileo
 providerId: galileo-ai
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- AI
-- LLM
-- Evaluation
+- AI Evaluation
 - Observability
 - GenAI
+- Guardrails
+- Agentic AI
+- LLM
 - Plans
-description: Placeholder plans/pricing artifact for Galileo. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+description: >-
+  Galileo offers a free Developer tier (limited monthly usage) and paid tiers (Starter, Pro,
+  Enterprise) with seat-based and usage-based pricing. Exact pricing for Pro and Enterprise is sales-
+  led. The platform is sold per-environment with metered usage on traces and evaluations.
+notes: Free Developer tier + paid Starter/Pro/Enterprise. Exact paid pricing is contact-sales.
 sources:
-- https://www.galileo.ai/
+- https://galileo.ai/pricing
+- https://docs.galileo.ai/
 plans:
-- id: galileo-ai-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: galileo-developer-free
+  name: Developer (Free)
+  type: free
+  description: Free tier for individuals to evaluate Galileo with limited monthly traces/evaluations.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Free Tier
+    name: free
     type: flat
-    metric: varies
+    metric: month
     limit: -1
-    timeFrame: usage
+    timeFrame: monthly
     geo: global
     unit: 1
-    price: see https://www.galileo.ai/
+    price: 0
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Limited monthly traces
+  - name: Single user
+- id: galileo-starter
+  name: Starter
+  type: paid
+  description: Paid team plan with higher trace and eval volume; published self-serve pricing.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: see https://galileo.ai/pricing
+    userMultiplied: true
+  elements:
+  - name: Multi-seat
+  - name: Higher trace volume
+- id: galileo-enterprise
+  name: Pro / Enterprise
+  type: enterprise
+  description: Enterprise plan with SSO, on-prem/VPC deployment options, and contracted usage commitments.
+  entries:
+  - label: Contract
+    name: contract
+    type: flat
+    metric: year
+    limit: -1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: true
+  elements:
+  - name: SSO
+  - name: VPC/on-prem
+  - name: Custom commit
+  - name: Premium support
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

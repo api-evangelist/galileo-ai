@@ -3,21 +3,48 @@ url: https://raw.githubusercontent.com/api-evangelist/galileo-ai/refs/heads/main
 name: Galileo
 x-type: company
 description: >-
-  Galileo is an AI evaluation, observability, and protection platform for GenAI applications, with hallucination detection, RAG metrics, and prompt evaluation.
+  Galileo (galileo.ai) is an AI observability, evaluation, and production-guardrail platform for GenAI
+  and agentic applications. It supports major LLM providers and integrates with popular frameworks
+  (LangChain, LlamaIndex). Galileo offers Python and TypeScript SDKs and a comprehensive REST API.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - AI
-  - LLM
-  - Evaluation
+  - AI Evaluation
   - Observability
   - GenAI
+  - Guardrails
+  - Agentic AI
+  - LLM
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: galileo-ai:platform
+    name: Galileo API
+    description: >-
+      REST API for the Galileo platform: projects, runs, prompts, datasets, traces, metrics, evaluations,
+      and guardrails. Authentication via API key issued from the Galileo console. Documentation indexed at
+      docs.galileo.ai/llms.txt for SDK and reference content.
+    humanURL: https://docs.galileo.ai/
+    baseURL: https://api.galileo.ai
+    tags:
+      - Projects
+      - Runs
+      - Prompts
+      - Datasets
+      - Evaluations
+      - Traces
+    properties:
+      - type: Documentation
+        url: https://docs.galileo.ai/
+      - type: PythonSDK
+        url: https://pypi.org/project/galileo/
+      - type: TypeScriptSDK
+        url: https://www.npmjs.com/package/@rungalileo/galileo
 common:
   - type: Website
-    url: https://www.galileo.ai/
+    url: https://galileo.ai/
+  - type: DeveloperPortal
+    url: https://docs.galileo.ai/
   - type: Plans
     url: plans/galileo-ai-plans-pricing.yml
   - type: RateLimits
