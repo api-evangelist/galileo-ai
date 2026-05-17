@@ -1,7 +1,7 @@
 aid: galileo-ai
 url: https://raw.githubusercontent.com/api-evangelist/galileo-ai/refs/heads/main/apis.yml
 name: Galileo
-x-type: company
+kind: company
 description: >-
   Galileo (galileo.ai) is an AI observability, evaluation, and production-guardrail platform for GenAI
   and agentic applications. It supports major LLM providers and integrates with popular frameworks
