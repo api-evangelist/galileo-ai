@@ -41,6 +41,10 @@ apis:
       - type: TypeScriptSDK
         url: https://www.npmjs.com/package/@rungalileo/galileo
 common:
+  - type: GitHubOrganization
+    url: https://github.com/rungalileo
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/galileo-ai
   - type: Website
     url: https://galileo.ai/
   - type: DeveloperPortal
