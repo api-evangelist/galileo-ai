@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/galileo-ai/main/json-schema/galileo-ai-dataset-schema.json",
+  "title": "Galileo Dataset",
+  "description": "A Galileo dataset used to seed experiments and to back annotation and evaluation workflows.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "project_id": { "type": "string", "format": "uuid" },
+    "num_rows": { "type": "integer", "minimum": 0 },
+    "column_names": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "Row": {
+      "type": "object",
+      "description": "A single row in a Galileo dataset.",
+      "properties": {
+        "id": { "type": "string" },
+        "values": { "type": "object", "additionalProperties": true },
+        "metadata": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "specification": "JSON Structure",
+  "version": "0.1",
+  "provider": "Galileo",
+  "providerId": "galileo-ai",
+  "description": "JSON Structure mapping of the Galileo platform's core domain objects and how they nest. Mirrors the entities defined in the JSON Schema files in json-schema/.",
+  "entities": [
+    {
+      "name": "Project",
+      "schema": "json-schema/galileo-ai-project-schema.json",
+      "children": ["Dataset", "Experiment", "LogStream", "PromptTemplate", "AnnotationTemplate"]
+    },
+    {
+      "name": "Dataset",
+      "schema": "json-schema/galileo-ai-dataset-schema.json",
+      "children": ["DatasetRow"]
+    },
+    {
+      "name": "Experiment",
+      "schema": "json-schema/galileo-ai-experiment-schema.json",
+      "references": ["Dataset", "PromptTemplate", "Metric"]
+    },
+    {
+      "name": "Trace",
+      "schema": "json-schema/galileo-ai-trace-schema.json",
+      "children": ["Span"],
+      "references": ["Project", "LogStream", "Metric"]
+    },
+    {
+      "name": "Span",
+      "parent": "Trace",
+      "kinds": ["workflow", "llm", "retriever", "tool"],
+      "references": ["Metric"]
+    },
+    {
+      "name": "Metric",
+      "schema": "json-schema/galileo-ai-metric-schema.json",
+      "kinds": ["builtin", "luna", "custom"]
+    },
+    {
+      "name": "AnnotationTemplate",
+      "children": ["AnnotationRating"]
+    },
+    {
+      "name": "Integration",
+      "kinds": ["llm_provider", "vector_store", "framework"]
+    },
+    { "name": "Group" },
+    { "name": "ApiKey" }
+  ]
+}

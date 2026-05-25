@@ -1,60 +1,194 @@
 aid: galileo-ai
 url: https://raw.githubusercontent.com/api-evangelist/galileo-ai/refs/heads/main/apis.yml
 name: Galileo
-kind: company
+x-type: company
 description: >-
-  Galileo (galileo.ai) is an AI observability, evaluation, and production-guardrail platform for GenAI
-  and agentic applications. It supports major LLM providers and integrates with popular frameworks
-  (LangChain, LlamaIndex). Galileo offers Python and TypeScript SDKs and a comprehensive REST API.
+  Galileo (galileo.ai, formerly rungalileo.io) is the GenAI evaluation, observability, and
+  production guardrail platform for LLM and agentic applications. Galileo provides
+  pre-built and custom evaluators, agentic trace and span logging, dataset and experiment
+  management, prompt management, runtime protect (guardrails), and integrations with
+  major LLM providers and agent frameworks. The platform exposes a public REST API plus
+  official Python and TypeScript SDKs and integrates with LangChain, CrewAI, OpenAI Agents,
+  and OpenTelemetry/OpenInference. Galileo is deployable as SaaS, VPC, or on-prem.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - AI Evaluation
-  - Observability
+  - AI Observability
   - GenAI
   - Guardrails
   - Agentic AI
   - LLM
+  - Tracing
+  - Experiments
+  - Prompts
+  - Datasets
 created: '2026-05-08'
-modified: '2026-05-08'
-specificationVersion: '0.19'
+modified: '2026-05-25'
+specificationVersion: '0.20'
 apis:
   - aid: galileo-ai:platform
-    name: Galileo API
+    name: Galileo Public API
     description: >-
-      REST API for the Galileo platform: projects, runs, prompts, datasets, traces, metrics, evaluations,
-      and guardrails. Authentication via API key issued from the Galileo console. Documentation indexed at
-      docs.galileo.ai/llms.txt for SDK and reference content.
+      Public REST API for the Galileo platform (api.galileo.ai/v2). Provides projects,
+      datasets, experiments, traces and spans, log streams, prompts, annotations, groups,
+      integrations, users, API keys, and authentication. Authentication is via a
+      Galileo-API-Key header or via OAuth2-password bearer token obtained at /v2/token.
+      The canonical OpenAPI is published at https://api.galileo.ai/public/v2/openapi.json
+      and a documentation index is available at https://docs.galileo.ai/llms.txt.
     humanURL: https://docs.galileo.ai/
     baseURL: https://api.galileo.ai
     tags:
       - Projects
-      - Runs
-      - Prompts
       - Datasets
-      - Evaluations
+      - Experiments
       - Traces
+      - Spans
+      - LogStreams
+      - Prompts
+      - Annotations
+      - Groups
+      - Integrations
+      - ApiKeys
+      - Users
+      - Auth
     properties:
       - type: Documentation
         url: https://docs.galileo.ai/
+      - type: APIReference
+        url: https://docs.galileo.ai/api-reference/
+      - type: OpenAPI
+        url: openapi/galileo-ai-openapi.yml
+      - type: CanonicalOpenAPI
+        url: https://api.galileo.ai/public/v2/openapi.json
+      - type: LLMsTxt
+        url: https://docs.galileo.ai/llms.txt
+      - type: GettingStarted
+        url: https://docs.galileo.ai/getting-started/quickstart
+      - type: Quickstart
+        url: https://docs.galileo.ai/getting-started/quickstart
       - type: PythonSDK
         url: https://pypi.org/project/galileo/
+      - type: PythonSDKRepo
+        url: https://github.com/rungalileo/galileo-python
+      - type: PythonSDKReference
+        url: https://docs.galileo.ai/sdk-api/python/sdk-reference
       - type: TypeScriptSDK
-        url: https://www.npmjs.com/package/@rungalileo/galileo
+        url: https://www.npmjs.com/package/galileo
+      - type: TypeScriptSDKRepo
+        url: https://github.com/rungalileo/galileo-js
+      - type: TypeScriptSDKReference
+        url: https://docs.galileo.ai/sdk-api/typescript/sdk-reference
+      - type: Authentication
+        url: https://docs.galileo.ai/api-reference/auth/
+      - type: Concepts
+        url: https://docs.galileo.ai/concepts/
+      - type: Metrics
+        url: https://docs.galileo.ai/concepts/metrics/overview
+      - type: Logging
+        url: https://docs.galileo.ai/concepts/logging/overview
+      - type: Protect
+        url: https://docs.galileo.ai/concepts/protect/overview
+      - type: SamplesRepo
+        url: https://github.com/rungalileo/sdk-examples
+      - type: NaftikoCapabilities
+        url: capabilities/
+      - type: Vocabulary
+        url: vocabulary/galileo-ai-vocabulary.yml
+      - type: JSONLDContext
+        url: json-ld/galileo-ai-context.jsonld
+      - type: SpectralRules
+        url: rules/galileo-ai-rules.yml
+    features:
+      - name: Evaluations
+        description: 20+ pre-built evaluators for RAG, agents, safety, and security plus custom evaluators built in the console or via API.
+      - name: Luna Models
+        description: Lightweight in-house judge models that replace expensive LLM-as-judge calls at substantially lower cost.
+      - name: Tracing & Spans
+        description: Capture nested traces (workflow, LLM, retriever, tool) for GenAI and agentic apps via SDK or OTel/OpenInference.
+      - name: Experiments
+        description: Run prompt or runner experiments against datasets with attached metrics; compare across runs.
+      - name: Datasets
+        description: Manage datasets with rows, columns, ground-truth, and synthetic data; query and download content.
+      - name: Prompts
+        description: Versioned prompt templates with parameters used in experiments and production.
+      - name: Annotations
+        description: Templates and ratings for capturing human/SME feedback on spans and outputs.
+      - name: Protect (Guardrails)
+        description: Runtime policy enforcement converting eval metrics into guardrails that block or rewrite harmful responses.
+      - name: Log Streams
+        description: Production log streams group traces by environment for monitoring and analysis.
+      - name: Integrations
+        description: Available integrations for LLM providers, vector stores, and frameworks managed via /v2/integrations.
+      - name: Groups & Access Control
+        description: Group roles, group memberships, and per-project access controls.
+      - name: API Keys
+        description: Per-user API keys, listable, createable, and deletable via the API.
+      - name: Multi-Deployment
+        description: SaaS, Virtual Private Cloud (VPC), and on-prem deployment options.
+    useCases:
+      - name: Evaluate RAG Pipelines
+        description: Score retrieval relevance, groundedness, and answer correctness across dataset rows.
+      - name: Monitor Agentic Workflows
+        description: Trace multi-step agent runs, identify failure modes, and convert insights into guardrails.
+      - name: Pre-Production Regression Testing
+        description: Run experiments against benchmark datasets when shipping a new prompt, model, or chain.
+      - name: Runtime Safety
+        description: Block or rewrite harmful, off-policy, or hallucinated outputs in production using Protect.
+      - name: Prompt A/B Testing
+        description: Compare prompt templates or models on the same dataset with shared metrics.
+      - name: Human-in-the-Loop QA
+        description: Collect SME ratings via annotation templates to refine evaluators and models.
+    integrations:
+      - name: OpenAI
+        description: Wrap OpenAI clients to auto-instrument calls (wrapOpenAI / OpenAI integration).
+      - name: LangChain
+        description: GalileoCallback handler for LangChain and LangGraph workflows.
+      - name: CrewAI
+        description: Third-party integration for CrewAI multi-agent workflows.
+      - name: OpenAI Agents SDK
+        description: GalileoTracingProcessor for the OpenAI Agents framework.
+      - name: OpenTelemetry / OpenInference
+        description: OTel-compatible ingestion via OpenInference semantic conventions.
+      - name: NVIDIA NeMo Agent Toolkit
+        description: Integration patterns demonstrated in rungalileo/NeMo-Agent-Toolkit.
+      - name: MCP (Model Context Protocol)
+        description: MCP server pattern for exposing Galileo to AI agents (rungalileo/demo-mcp).
+    solutions:
+      - name: GenAI Reliability
+        description: Reduce hallucination and incorrect agent behavior via evaluation-driven development.
+      - name: AI Safety & Compliance
+        description: Enforce safety, security, and policy via Protect guardrails at runtime.
+      - name: Cost Optimization
+        description: Use Luna models and sampling to reduce LLM-as-judge cost.
 common:
-  - type: GitHubOrganization
-    url: https://github.com/rungalileo
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/galileo-ai
   - type: Website
     url: https://galileo.ai/
   - type: DeveloperPortal
     url: https://docs.galileo.ai/
+  - type: Documentation
+    url: https://docs.galileo.ai/
+  - type: APIReference
+    url: https://docs.galileo.ai/api-reference/
+  - type: Pricing
+    url: https://galileo.ai/pricing
+  - type: Blog
+    url: https://galileo.ai/blog
+  - type: GitHubOrganization
+    url: https://github.com/rungalileo
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/galileo-ai
   - type: Plans
     url: plans/galileo-ai-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/galileo-ai-rate-limits.yml
   - type: FinOps
     url: finops/galileo-ai-finops.yml
+  - type: JSONLD
+    url: json-ld/galileo-ai-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/galileo-ai-vocabulary.yml
+  - type: SpectralRules
+    url: rules/galileo-ai-rules.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

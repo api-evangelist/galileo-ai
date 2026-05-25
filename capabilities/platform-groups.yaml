@@ -1,0 +1,114 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Galileo Public API — Groups
+  description: 'Galileo Public API — Groups. Self-contained Naftiko capability for managing
+    Galileo groups, group roles, and current-user group memberships.'
+  tags:
+  - Galileo
+  - Groups
+  - AccessControl
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    GALILEO_API_KEY: GALILEO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-groups
+    baseUri: https://api.galileo.ai
+    description: Galileo Groups business capability.
+    resources:
+    - name: grouproles
+      path: /v2/group_roles
+      operations:
+      - name: listgrouproles
+        method: GET
+        description: List available group roles.
+    - name: groups
+      path: /v2/groups
+      operations:
+      - name: listgroups
+        method: GET
+        description: List Galileo groups.
+      - name: creategroup
+        method: POST
+        description: Create a Galileo group.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+    - name: group
+      path: /v2/groups/{group_id}
+      operations:
+      - name: getgroup
+        method: GET
+        description: Get a Galileo group.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: string
+          required: true
+      - name: updategroup
+        method: PATCH
+        description: Update a Galileo group.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          required: true
+      - name: deletegroup
+        method: DELETE
+        description: Delete a Galileo group.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: string
+          required: true
+    - name: currentusergroups
+      path: /v2/current_user/groups
+      operations:
+      - name: getcurrentusergroups
+        method: GET
+        description: Get the current user's group memberships.
+    authentication:
+      type: apikey
+      key: Galileo-API-Key
+      value: '{{env.GALILEO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: platform-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Galileo Groups.
+    tools:
+    - name: galileo-list-groups
+      description: List Galileo groups.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-groups.listgroups
+    - name: galileo-create-group
+      description: Create a Galileo group.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-groups.creategroup
+      with:
+        body: tools.body
+    - name: galileo-get-current-user-groups
+      description: Get the current user's group memberships.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-groups.getcurrentusergroups

@@ -1,0 +1,34 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.galileo.ai/v2/datasets/d_01JABC.../content/query",
+    "headers": {
+      "Galileo-API-Key": "$GALILEO_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "filter": {
+        "column": "metadata.difficulty",
+        "op": "eq",
+        "value": "hard"
+      },
+      "limit": 25
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "rows": [
+        {
+          "id": "row_01...",
+          "values": {
+            "question": "What is the maturity model for FOCUS billing data?",
+            "expected_answer": "FOCUS 1.3 defines...",
+            "metadata": { "difficulty": "hard" }
+          }
+        }
+      ],
+      "total": 42
+    }
+  }
+}

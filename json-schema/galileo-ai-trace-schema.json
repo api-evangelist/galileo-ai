@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/galileo-ai/main/json-schema/galileo-ai-trace-schema.json",
+  "title": "Galileo Trace",
+  "description": "A trace is a top-level execution record of a GenAI or agentic invocation, containing one or more spans.",
+  "type": "object",
+  "required": ["id", "project_id"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "project_id": { "type": "string", "format": "uuid" },
+    "log_stream_id": { "type": "string", "format": "uuid" },
+    "session_id": { "type": "string" },
+    "name": { "type": "string" },
+    "input": {},
+    "output": {},
+    "spans": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Span" }
+    },
+    "metrics": { "type": "object", "additionalProperties": true },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "Span": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "trace_id": { "type": "string" },
+        "parent_id": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["workflow", "llm", "retriever", "tool"]
+        },
+        "name": { "type": "string" },
+        "input": {},
+        "output": {},
+        "model": { "type": "string" },
+        "tokens_input": { "type": "integer", "minimum": 0 },
+        "tokens_output": { "type": "integer", "minimum": 0 },
+        "duration_ms": { "type": "integer", "minimum": 0 },
+        "metrics": { "type": "object", "additionalProperties": true },
+        "tools_used": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

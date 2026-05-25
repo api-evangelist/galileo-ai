@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.galileo.ai/v2/projects/8c2b1f7e-1a3c-4f70-9e0d-8a4b9f0e1d22/experiments",
+    "headers": {
+      "Galileo-API-Key": "$GALILEO_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "claude-opus-vs-sonnet-rag",
+      "dataset_id": "d_01JABC...",
+      "prompt_template_id": "p_01JDEF...",
+      "metrics": ["context_adherence", "groundedness", "correctness"]
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "e_01JG...",
+      "name": "claude-opus-vs-sonnet-rag",
+      "project_id": "8c2b1f7e-1a3c-4f70-9e0d-8a4b9f0e1d22",
+      "dataset_id": "d_01JABC...",
+      "prompt_template_id": "p_01JDEF...",
+      "metrics": ["context_adherence", "groundedness", "correctness"],
+      "status": "pending",
+      "created_at": "2026-05-25T12:05:00Z"
+    }
+  }
+}

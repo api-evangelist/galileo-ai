@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Galileo Public API — Experiments
+  description: 'Galileo Public API — Experiments. Self-contained Naftiko capability for creating,
+    listing, searching, updating, and deleting experiments within a Galileo project.'
+  tags:
+  - Galileo
+  - Experiments
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    GALILEO_API_KEY: GALILEO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-experiments
+    baseUri: https://api.galileo.ai
+    description: Galileo Experiments business capability.
+    resources:
+    - name: experiments
+      path: /v2/projects/{project_id}/experiments
+      operations:
+      - name: listexperiments
+        method: GET
+        description: List experiments in a Galileo project.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+      - name: createexperiment
+        method: POST
+        description: Create an experiment in a Galileo project.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          required: true
+    - name: experiment
+      path: /v2/projects/{project_id}/experiments/{experiment_id}
+      operations:
+      - name: getexperiment
+        method: GET
+        description: Get an experiment by id.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+        - name: experiment_id
+          in: path
+          type: string
+          required: true
+      - name: updateexperiment
+        method: PUT
+        description: Update an experiment.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+        - name: experiment_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          required: true
+      - name: deleteexperiment
+        method: DELETE
+        description: Delete an experiment.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+        - name: experiment_id
+          in: path
+          type: string
+          required: true
+    - name: experimentsearch
+      path: /v2/projects/{project_id}/experiments/search
+      operations:
+      - name: searchexperiments
+        method: POST
+        description: Search experiments within a Galileo project.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          required: true
+    authentication:
+      type: apikey
+      key: Galileo-API-Key
+      value: '{{env.GALILEO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: platform-experiments-rest
+    port: 8080
+    description: REST adapter for Galileo Experiments.
+    resources:
+    - path: /v1/projects/{project_id}/experiments
+      name: experiments
+      operations:
+      - method: GET
+        name: listexperiments
+        call: platform-experiments.listexperiments
+        with:
+          project_id: rest.path.project_id
+      - method: POST
+        name: createexperiment
+        call: platform-experiments.createexperiment
+        with:
+          project_id: rest.path.project_id
+          body: rest.body
+  - type: mcp
+    namespace: platform-experiments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Galileo Experiments.
+    tools:
+    - name: galileo-list-experiments
+      description: List experiments in a project.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-experiments.listexperiments
+      with:
+        project_id: tools.project_id
+    - name: galileo-create-experiment
+      description: Create an experiment.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-experiments.createexperiment
+      with:
+        project_id: tools.project_id
+        body: tools.body
+    - name: galileo-search-experiments
+      description: Search experiments within a project.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-experiments.searchexperiments
+      with:
+        project_id: tools.project_id
+        body: tools.body

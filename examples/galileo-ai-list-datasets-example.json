@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.galileo.ai/v2/datasets",
+    "headers": {
+      "Galileo-API-Key": "$GALILEO_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "datasets": [
+        {
+          "id": "d_01JABC...",
+          "name": "rag-eval-questions-v1",
+          "project_id": "8c2b1f7e-1a3c-4f70-9e0d-8a4b9f0e1d22",
+          "num_rows": 250,
+          "column_names": ["question", "expected_answer", "metadata"],
+          "created_at": "2026-05-20T18:21:00Z"
+        }
+      ],
+      "next_starting_token": null
+    }
+  }
+}

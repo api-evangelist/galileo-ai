@@ -1,0 +1,100 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Galileo Public API — Annotations
+  description: 'Galileo Public API — Annotations. Self-contained Naftiko capability for managing
+    annotation templates and ratings within a Galileo project.'
+  tags:
+  - Galileo
+  - Annotations
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    GALILEO_API_KEY: GALILEO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: platform-annotations
+    baseUri: https://api.galileo.ai
+    description: Galileo Annotations business capability.
+    resources:
+    - name: annotationtemplates
+      path: /v2/projects/{project_id}/annotation/templates
+      operations:
+      - name: listannotationtemplates
+        method: GET
+        description: List annotation templates in a Galileo project.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+      - name: createannotationtemplate
+        method: POST
+        description: Create an annotation template in a Galileo project.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          required: true
+    - name: annotationratings
+      path: /v2/projects/{project_id}/annotation/ratings
+      operations:
+      - name: createannotationratings
+        method: POST
+        description: Create annotation ratings against spans or rows.
+        inputParameters:
+        - name: project_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          required: true
+    authentication:
+      type: apikey
+      key: Galileo-API-Key
+      value: '{{env.GALILEO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: platform-annotations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Galileo Annotations.
+    tools:
+    - name: galileo-list-annotation-templates
+      description: List annotation templates in a Galileo project.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: platform-annotations.listannotationtemplates
+      with:
+        project_id: tools.project_id
+    - name: galileo-create-annotation-template
+      description: Create an annotation template.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-annotations.createannotationtemplate
+      with:
+        project_id: tools.project_id
+        body: tools.body
+    - name: galileo-create-annotation-ratings
+      description: Create annotation ratings.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: platform-annotations.createannotationratings
+      with:
+        project_id: tools.project_id
+        body: tools.body

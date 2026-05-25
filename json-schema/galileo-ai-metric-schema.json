@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/galileo-ai/main/json-schema/galileo-ai-metric-schema.json",
+  "title": "Galileo Metric",
+  "description": "A metric value produced by a Galileo evaluator (built-in, Luna, or custom) against a span, trace, or dataset row.",
+  "type": "object",
+  "required": ["name", "value"],
+  "properties": {
+    "name": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["builtin", "luna", "custom"]
+    },
+    "value": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "boolean" },
+        { "type": "string" }
+      ]
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Optional natural-language rationale produced by the evaluator."
+    },
+    "judge_model": {
+      "type": "string",
+      "description": "Identifier of the judge model used (LLM-as-judge or Luna)."
+    }
+  },
+  "additionalProperties": true
+}
