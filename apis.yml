@@ -3,13 +3,12 @@ url: https://raw.githubusercontent.com/api-evangelist/galileo-ai/refs/heads/main
 name: Galileo
 x-type: company
 description: >-
-  Galileo (galileo.ai, formerly rungalileo.io) is the GenAI evaluation, observability, and
-  production guardrail platform for LLM and agentic applications. Galileo provides
-  pre-built and custom evaluators, agentic trace and span logging, dataset and experiment
-  management, prompt management, runtime protect (guardrails), and integrations with
-  major LLM providers and agent frameworks. The platform exposes a public REST API plus
-  official Python and TypeScript SDKs and integrates with LangChain, CrewAI, OpenAI Agents,
-  and OpenTelemetry/OpenInference. Galileo is deployable as SaaS, VPC, or on-prem.
+  Galileo (galileo.ai, formerly rungalileo.io) is the GenAI evaluation, observability, and production guardrail platform
+  for LLM and agentic applications. Galileo provides pre-built and custom evaluators, agentic trace and span logging,
+  dataset and experiment management, prompt management, runtime protect (guardrails), and integrations with major LLM
+  providers and agent frameworks. The platform exposes a public REST API plus official Python and TypeScript SDKs and
+  integrates with LangChain, CrewAI, OpenAI Agents, and OpenTelemetry/OpenInference. Galileo is deployable as SaaS, VPC,
+  or on-prem.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - AI Evaluation
@@ -29,12 +28,11 @@ apis:
   - aid: galileo-ai:platform
     name: Galileo Public API
     description: >-
-      Public REST API for the Galileo platform (api.galileo.ai/v2). Provides projects,
-      datasets, experiments, traces and spans, log streams, prompts, annotations, groups,
-      integrations, users, API keys, and authentication. Authentication is via a
-      Galileo-API-Key header or via OAuth2-password bearer token obtained at /v2/token.
-      The canonical OpenAPI is published at https://api.galileo.ai/public/v2/openapi.json
-      and a documentation index is available at https://docs.galileo.ai/llms.txt.
+      Public REST API for the Galileo platform (api.galileo.ai/v2). Provides projects, datasets, experiments, traces and
+      spans, log streams, prompts, annotations, groups, integrations, users, API keys, and authentication.
+      Authentication is via a Galileo-API-Key header or via OAuth2-password bearer token obtained at /v2/token. The
+      canonical OpenAPI is published at https://api.galileo.ai/public/v2/openapi.json and a documentation index is
+      available at https://docs.galileo.ai/llms.txt.
     humanURL: https://docs.galileo.ai/
     baseURL: https://api.galileo.ai
     tags:
@@ -90,8 +88,6 @@ apis:
         url: https://docs.galileo.ai/concepts/protect/overview
       - type: SamplesRepo
         url: https://github.com/rungalileo/sdk-examples
-      - type: NaftikoCapabilities
-        url: capabilities/
       - type: Vocabulary
         url: vocabulary/galileo-ai-vocabulary.yml
       - type: JSONLDContext
@@ -100,11 +96,15 @@ apis:
         url: rules/galileo-ai-rules.yml
     features:
       - name: Evaluations
-        description: 20+ pre-built evaluators for RAG, agents, safety, and security plus custom evaluators built in the console or via API.
+        description: >-
+          20+ pre-built evaluators for RAG, agents, safety, and security plus custom evaluators built in the console or
+          via API.
       - name: Luna Models
         description: Lightweight in-house judge models that replace expensive LLM-as-judge calls at substantially lower cost.
       - name: Tracing & Spans
-        description: Capture nested traces (workflow, LLM, retriever, tool) for GenAI and agentic apps via SDK or OTel/OpenInference.
+        description: >-
+          Capture nested traces (workflow, LLM, retriever, tool) for GenAI and agentic apps via SDK or
+          OTel/OpenInference.
       - name: Experiments
         description: Run prompt or runner experiments against datasets with attached metrics; compare across runs.
       - name: Datasets
