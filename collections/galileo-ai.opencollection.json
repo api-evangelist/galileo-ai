@@ -1,0 +1,699 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Galileo Public API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Galileo-API-Key",
+      "value": "{{Galileo-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "healthcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/healthcheck"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/token"
+          }
+        },
+        {
+          "info": {
+            "name": "loginEmail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "loginApiKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/login/api_key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "refreshToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/refresh_token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ApiKeys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listUserApiKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/users/:user_id/api_keys",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "createApiKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/users/api_keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deleteApiKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.galileo.ai/v2/users/api_keys/:api_key_id",
+            "params": [
+              {
+                "name": "api_key_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listDatasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/datasets"
+          }
+        },
+        {
+          "info": {
+            "name": "createDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "getDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deleteDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "getDatasetContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id/content",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "replaceDatasetContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id/content",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "patchDatasetContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id/content",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "queryDatasetContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id/content/query",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "downloadDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/datasets/:dataset_id/download",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Experiments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listExperiments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/experiments",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "createExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/experiments",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "getExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/experiments/:experiment_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "experiment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/experiments/:experiment_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "experiment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deleteExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/experiments/:experiment_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "experiment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "searchExperiments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/experiments/search",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Annotations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listAnnotationTemplates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/annotation/templates",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "createAnnotationTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/annotation/templates",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "createAnnotationRatings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/projects/:project_id/annotation/ratings",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listGroupRoles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/group_roles"
+          }
+        },
+        {
+          "info": {
+            "name": "listGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/groups"
+          }
+        },
+        {
+          "info": {
+            "name": "createGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.galileo.ai/v2/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "getGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "updateGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.galileo.ai/v2/groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deleteGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.galileo.ai/v2/groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "getCurrentUserGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/current_user/groups"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listAvailableIntegrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/integrations/available"
+          }
+        },
+        {
+          "info": {
+            "name": "getIntegration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/integrations/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "getIntegrationStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.galileo.ai/v2/integrations/:name/status",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
