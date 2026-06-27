@@ -58,11 +58,11 @@ apis:
         url: openapi/galileo-ai-openapi.yml
       - type: CanonicalOpenAPI
         url: https://api.galileo.ai/public/v2/openapi.json
-      - type: LLMsTxt
+      - type: LlmsText
         url: https://docs.galileo.ai/llms.txt
       - type: GettingStarted
         url: https://docs.galileo.ai/getting-started/quickstart
-      - type: Quickstart
+      - type: GettingStarted
         url: https://docs.galileo.ai/getting-started/quickstart
       - type: PythonSDK
         url: https://pypi.org/project/galileo/
