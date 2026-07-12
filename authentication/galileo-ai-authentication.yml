@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/galileo-ai-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter: Galileo-API-Key
+  sources:
+  - openapi/galileo-ai-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: OAuth 2.0 password bearer (JWT) issued by /v2/token
+  sources:
+  - openapi/galileo-ai-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/galileo-ai-openapi.yml

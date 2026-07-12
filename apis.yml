@@ -161,6 +161,10 @@ apis:
       - name: Cost Optimization
         description: Use Luna models and sampling to reduce LLM-as-judge cost.
 common:
+  - type: DomainSecurity
+    url: security/galileo-ai-domain-security.yml
+  - type: Authentication
+    url: authentication/galileo-ai-authentication.yml
   - type: Website
     url: https://galileo.ai/
   - type: DeveloperPortal
