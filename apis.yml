@@ -161,6 +161,8 @@ apis:
       - name: Cost Optimization
         description: Use Luna models and sampling to reduce LLM-as-judge cost.
 common:
+  - type: AgenticAccess
+    url: agentic-access/galileo-ai-agentic-access.yml
   - type: DomainSecurity
     url: security/galileo-ai-domain-security.yml
   - type: Authentication
