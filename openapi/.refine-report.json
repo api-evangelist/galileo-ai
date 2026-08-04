@@ -1,0 +1,28 @@
+{
+  "provider": "galileo-ai",
+  "sources": [
+    "galileo-ai-annotations-api-openapi.yml",
+    "galileo-ai-apikeys-api-openapi.yml",
+    "galileo-ai-auth-api-openapi.yml",
+    "galileo-ai-datasets-api-openapi.yml",
+    "galileo-ai-experiments-api-openapi.yml",
+    "galileo-ai-groups-api-openapi.yml",
+    "galileo-ai-health-api-openapi.yml",
+    "galileo-ai-integrations-api-openapi.yml"
+  ],
+  "outputs": [
+    "galileo-ai-annotations-api-openapi.yml",
+    "galileo-ai-apikeys-api-openapi.yml",
+    "galileo-ai-auth-api-openapi.yml",
+    "galileo-ai-datasets-api-openapi.yml",
+    "galileo-ai-experiments-api-openapi.yml",
+    "galileo-ai-groups-api-openapi.yml",
+    "galileo-ai-health-api-openapi.yml",
+    "galileo-ai-integrations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
