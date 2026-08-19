@@ -36,7 +36,7 @@ tags:
   - Datasets
 created: '2026-05-08'
 modified: '2026-05-25'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: galileo-ai:galileo-ai-annotations-api
   name: Galileo Annotations API
