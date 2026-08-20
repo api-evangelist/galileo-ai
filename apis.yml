@@ -94,6 +94,8 @@ apis:
   humanURL: https://docs.galileo.ai/
   baseURL: https://api.galileo.ai
   tags:
+  - APIKeys
+  tags_raw:
   - ApiKeys
   properties:
   - type: OpenAPI
@@ -144,6 +146,8 @@ apis:
   humanURL: https://docs.galileo.ai/
   baseURL: https://api.galileo.ai
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -294,6 +298,8 @@ apis:
   humanURL: https://docs.galileo.ai/
   baseURL: https://api.galileo.ai
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -394,6 +400,8 @@ apis:
   humanURL: https://docs.galileo.ai/
   baseURL: https://api.galileo.ai
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
