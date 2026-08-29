@@ -9,6 +9,18 @@ description: >-
   providers and agent frameworks. The platform exposes a public REST API plus official Python and TypeScript SDKs and
   integrates with LangChain, CrewAI, OpenAI Agents, and OpenTelemetry/OpenInference. Galileo is deployable as SaaS, VPC,
   or on-prem.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
