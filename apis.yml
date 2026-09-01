@@ -106,7 +106,7 @@ apis:
   humanURL: https://docs.galileo.ai/
   baseURL: https://api.galileo.ai
   tags:
-  - ApiKeys
+  - APIKeys
   tags_raw:
   - ApiKeys
   properties:
