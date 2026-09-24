@@ -23,6 +23,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "galileo-ai-annotations-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "galileo-ai-apikeys-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "galileo-ai-auth-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "galileo-ai-datasets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "galileo-ai-experiments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "galileo-ai-groups-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "galileo-ai-health-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "galileo-ai-integrations-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

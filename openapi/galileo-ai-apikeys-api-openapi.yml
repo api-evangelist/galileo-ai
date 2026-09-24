@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Galileo Public Annotations ApiKeys API
+  title: Galileo Public Annotations API Keys API
   version: v2
   description: 'Best-effort OpenAPI 3.1 description of the Galileo (galileo.ai) public
 
@@ -63,13 +63,6 @@ paths:
         '204':
           description: No Content
 components:
-  responses:
-    Ok:
-      description: Successful response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Object'
   schemas:
     Object:
       type: object
@@ -81,6 +74,13 @@ components:
       required: true
       schema:
         type: string
+  responses:
+    Ok:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Object'
   securitySchemes:
     apiKeyHeader:
       type: apiKey
